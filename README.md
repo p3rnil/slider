@@ -1,36 +1,22 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Este componente es un slider que tiene dos modos de uso: el normal, con mínimo/máximo, y el que tiene valores fijados entre estos. Cada modo se puede encontrar en las rutas localhost:8080/exercise1 y localhost:8080/exercise2.
 
-## Getting Started
+La separación de estos modos está hecha de manera que el componente Range renderiza el componente A o B según el modo que se le indique. Esto está así para no tener un solo componente que tuviera que hacer la distinción con condicionales.
 
-First, run the development server:
+El comando para lanzarlo es:
 
 ```bash
-npm run dev
-# or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Para los tests
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn test
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+Mejoras:
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Encontrar una solución para el getBoundingClientRect, ya que el DOM de JavaScript no lo soporta y hace que los tests de arrastre no funcionen.
+No usar el document para añadir el listener del evento. Esto lo he dejado así en vez de usar ref, ya que solo aplicaba al entorno del slider y, al salir, se interrumpía.
+- Darle una vuelta al código compartido entre ambos modos para ver si se puede extraer lógica en hooks.
